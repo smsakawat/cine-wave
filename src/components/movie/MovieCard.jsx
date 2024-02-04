@@ -32,7 +32,7 @@ const MovieCard = ({ movie = {} }) => {
             <h3 className="text-xl mb-1">{movie.title}</h3>
             <p className="text-[#575A6E] text-sm mb-2">{movie.release_date}</p>
             <Rating value={Math.floor(movie.vote_average / 2)} />
-            <AddToCartBtn />
+            <AddToCartBtn movie={movie} />
           </figcaption>
         </button>
       </figure>
