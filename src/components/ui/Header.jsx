@@ -3,18 +3,20 @@ import Logo from '../../assets/icons/logo.svg';
 import Moon from '../../assets/icons/moon.svg';
 import Ring from '../../assets/icons/ring.svg';
 import Cart from '../../assets/icons/shopping-cart.svg';
-import { MovieContext } from '../context/contexts';
+import Sun from '../../assets/icons/sun.svg';
+import { MovieContext, ThemeContext } from '../context/contexts';
 import CartDetails from '../movie/CartDetails';
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const { cartData } = useContext(MovieContext);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
   return (
     <>
       <header>
         <nav className="container flex items-center justify-between space-x-10 py-6">
           <a href="index.html">
-            <img src={Logo} width="139" height="26" alt="" />
+            <img src={Logo} width="139" height="26" alt="logo" />
           </a>
 
           <ul className="flex items-center space-x-5">
@@ -23,15 +25,21 @@ const Header = () => {
                 className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                 href="#"
               >
-                <img src={Ring} width="24" height="24" alt="" />
+                <img src={Ring} width="24" height="24" alt="ring-icon" />
               </a>
             </li>
             <li>
               <a
                 className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                 href="#"
+                onClick={() => setDarkMode(!darkMode)}
               >
-                <img src={Moon} width="24" height="24" alt="" />
+                <img
+                  src={darkMode ? Sun : Moon}
+                  width="24"
+                  height="24"
+                  alt="moon-icon"
+                />
               </a>
             </li>
             <li>
@@ -51,6 +59,7 @@ const Header = () => {
           </ul>
         </nav>
       </header>
+      {/* Show Cart Details */}
       {showCart && <CartDetails onClose={() => setShowCart(false)} />}
     </>
   );

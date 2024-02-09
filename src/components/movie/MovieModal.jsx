@@ -1,11 +1,18 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../context/contexts';
 import AddToCartBtn from './AddToCartBtn';
 
 const MovieModal = ({ movie, onClose }) => {
+  const { darkMode } = useContext(ThemeContext);
   return (
     <div
       className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/10 backdrop-blur-md bg-no-repeat bg-center bg-cover"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.93), rgba(0, 0, 0, 0.93)), url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})`,
+        backgroundImage: `${
+          darkMode
+            ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.95))'
+            : 'linear-gradient(to bottom, rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.85))'
+        }, url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})`,
       }}
       src={'https://image.tmdb.org/t/p/w500' + movie.backdrop_path}
     >

@@ -1,10 +1,11 @@
 export default {
   content: ['index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       container: {
         center: true,
-        padding: '1.25rem',
+        'padding-inline': '1.25rem',
       },
       colors: {
         primary: '#10b981',

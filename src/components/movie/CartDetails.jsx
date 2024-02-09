@@ -16,7 +16,10 @@ const CartDetails = ({ onClose }) => {
           <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
             {cartData.length > 0 ? (
               cartData.map(movie => (
-                <div className="grid grid-cols-[1fr_auto] gap-4 items-center">
+                <div
+                  className="grid grid-cols-[1fr_auto] gap-4 items-center"
+                  key={movie.id}
+                >
                   <div className="flex items-center gap-4">
                     <img
                       className="rounded overflow-hidden"
@@ -51,7 +54,7 @@ const CartDetails = ({ onClose }) => {
                 </div>
               ))
             ) : (
-              <h3 className="text-slate-300 text-center font-semibold text-3xl">
+              <h3 className="text-zinc-400 dark:text-slate-300 text-center font-semibold text-3xl">
                 Cart is empty
               </h3>
             )}
@@ -65,7 +68,7 @@ const CartDetails = ({ onClose }) => {
               <span>Checkout</span>
             </a>
             <a
-              className="border border-[#74766F] rounded-lg py-2 px-5 text-[#6F6F6F] dark:text-gray-200 font-semibold text-sm hover:bg-slate-800 transition-all"
+              className="border border-[#74766F] rounded-lg py-2 px-5 text-[#6F6F6F] dark:text-gray-200 font-semibold text-sm hover:bg-gray-200 dark:hover:bg-slate-800 transition-all"
               href="#"
               onClick={onClose}
             >

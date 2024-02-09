@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0  --open",
+    "react": "^18.2.0 --open",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
