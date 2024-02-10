@@ -9,7 +9,9 @@ import CartDetails from '../movie/CartDetails';
 
 const Header = () => {
   const [showCart, setShowCart] = useState(false);
-  const { cartData } = useContext(MovieContext);
+  const {
+    state: { cartData },
+  } = useContext(MovieContext);
   const { darkMode, setDarkMode } = useContext(ThemeContext);
   return (
     <>

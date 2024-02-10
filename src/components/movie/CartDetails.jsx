@@ -1,11 +1,24 @@
 import { useContext } from 'react';
+import { toast } from 'react-toastify';
 import CheckoutIcon from '../../assets/icons/checkout.svg';
 import RemoveIcon from '../../assets/icons/delete.svg';
 import { MovieContext } from '../context/contexts';
 import Rating from './Rating';
 
 const CartDetails = ({ onClose }) => {
-  const { cartData, setCartData } = useContext(MovieContext);
+  const {
+    state: { cartData },
+    dispatch,
+  } = useContext(MovieContext);
+
+  // Delete movie from cart
+  const handleRemoveFromCart = function (movie) {
+    dispatch({
+      type: 'REMOVE_FROM_CART',
+      payload: movie,
+    });
+    toast.success(`${movie.title} removed from cart`);
+  };
   return (
     <div className="fixed top-0 left-0 w-screen h-screen z-50 bg-black/60 backdrop-blur-sm">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md  md:max-w-xl lg:max-w-3xl p-4 max-h-[90vh] overflow-auto">
@@ -43,9 +56,7 @@ const CartDetails = ({ onClose }) => {
                   <div className="flex justify-between gap-4 items-center">
                     <button
                       className="bg-[#D42967] rounded-md p-2 md:px-4 inline-flex items-center space-x-2 text-white hover:bg-[#D42967]/80 transition-all"
-                      onClick={() =>
-                        setCartData(cartData.filter(m => m.id !== movie.id))
-                      }
+                      onClick={() => handleRemoveFromCart(movie)}
                     >
                       <img className="w-5 h-5" src={RemoveIcon} alt="" />
                       <span className="max-md:hidden">Remove</span>
